@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Lifeline?</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Initial Screen -->
+    <div id="initial-screen" class="screen">
+      <h1>💖 Here's Something Special for You 💖</h1>
+      <div class="heart" onclick="showProposal()">💌</div>
+    </div>
+
+    <!-- Proposal Screen -->
+    <div id="proposal-screen" class="screen hidden">
+      <h2>I Really Love You!</h2>
+      <p>Do you love me too?</p>
+      <div class="options">
+        <button id="yes-btn" onclick="handleYes()">Yes</button>
+        <button id="no-btn" onclick="handleNo()">No</button>
+      </div>
+      <img src="cat1.jpg" alt="Cute Cat" class="cat-image">
+    </div>
+
+    <!-- Yes Screen -->
+    <div id="yes-screen" class="screen hidden">
+      <h2>I Knew You'd Say Yes! 🥰</h2>
+      <p>You've made me the happiest person in the world!</p>
+      <img src="cat2.jpg" alt="Happy Cat" class="cat-image">
+      <div id="love-message" class="hidden">
+        <p id="typed-message"></p>
+      </div>
+    </div>
+     
+
+    <!-- No Screen -->
+    <div id="no-screen" class="screen hidden">
+      <h2>Please Don't Do This! 😢</h2>
+      <p>I really love you. Please give me a chance!</p>
+      <div class="options">
+        <button id="yes-btn" onclick="handleYes()">Yes</button>
+        <button id="no-btn" onclick="handleNoAgain()">No</button>
+      </div>
+      <img src="cat3.jpg" alt="Sad Cat" class="cat-image">
+    </div>
+
+    <!-- Convince Screen -->
+    <div id="convince-screen" class="screen hidden">
+      <h2>I Won't Give Up! 💪</h2>
+      <p>I'll keep trying until you say yes!</p>
+      <div class="options">
+        <button id="yes-btn" onclick="handleYes()">Yes</button>
+        <button id="runaway-btn" onmouseover="moveButton()">No</button>
+      </div>
+      <img src="cat4.jpg" alt="Determined Cat" class="cat-image">
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="backgroundmusic" src="backgroundmusic.mp3" loop></audio>
+
+  <script>
+    document.addEventListener("click", function startMusic() {
+      const bgMusic = document.getElementById("backgroundmusic");
+      bgMusic.volume = 0.20;
+      
+      bgMusic.play().then(() => {
+        console.log("Music started.");
+      }).catch(error => {
+        console.log("Autoplay blocked:", error);
+      });
+
+      // Remove event listener after first interaction
+      document.removeEventListener("click", startMusic);
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
